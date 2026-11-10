@@ -1,0 +1,87 @@
+.entryRow { margin-top: 5px; }
+.entry { gap: 9px; padding: 6px 0; min-height: 30px; color: #ad8aca; font-size: 10px; }
+.entry svg { width: 17px; height: 17px; }
+.modal { width: min(1000px, calc(100% - 32px)); max-height: calc(100dvh - 32px); margin: auto; padding: 0; overflow: auto; overscroll-behavior: contain; color: #e7def6; background: #100b18; border: 1px solid #79519780; border-radius: 18px; box-shadow: 0 24px 100px #0009, 0 0 65px #6d28d91a; }
+.modal::backdrop { background: #050309d6; backdrop-filter: blur(8px); }
+.header { display: flex; align-items: flex-start; justify-content: space-between; gap: 15px; padding: 25px 28px 18px; border-bottom: 1px solid #c4b5fd16; }
+.kicker { margin: 0 0 11px; color: #b48bda; font: 8px/1.5 ui-monospace, Consolas, monospace; letter-spacing: 1.8px; }
+.header h2 { margin: 0; font-size: clamp(20px, 3vw, 29px); line-height: 1.25; font-weight: 600; letter-spacing: -.9px; }
+.header p:last-child { margin: 10px 0 0; font-size: 11px; line-height: 1.6; color: #a995bb; }
+.close { flex-shrink: 0; width: 34px; height: 34px; }
+.close svg { width: 16px; height: 16px; }
+.game { padding: 0 24px; }
+.hud { display: flex; gap: 28px; align-items: center; padding: 15px 3px; }
+.hud > div { display: flex; align-items: baseline; gap: 10px; }
+.hud span { color: #9d7cb6; font: 8px/1.3 ui-monospace, Consolas, monospace; letter-spacing: 1.4px; }
+.hud strong { font: 500 18px/1.3 ui-monospace, Consolas, monospace; color: #d5b9f4; font-variant-numeric: tabular-nums; }
+.pause { margin-left: auto; font-size: 10px; color: #b29bc4; padding: 8px; border: 1px solid #75528c50; border-radius: 4px; }
+.pause:disabled { opacity: .35; }
+.stage { position: relative; overflow: hidden; border: 1px solid #70428a5c; border-radius: 9px; background: #100b1c; }
+.canvas { width: 100%; height: auto; aspect-ratio: 3 / 1; display: block; object-fit: contain; outline: none; }
+.canvas:focus-visible { outline: 2px solid #ba94ed; outline-offset: -3px; }
+.overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; flex-direction: column; padding: 15px; text-align: center; background: #100b1cd9; animation: appear .18s ease-out both; }
+@keyframes appear { from { opacity: 0; } to { opacity: 1; } }
+.overlayKicker { color: #b488d7; font: 8px/1.5 ui-monospace, Consolas, monospace; letter-spacing: 2px; }
+.overlay h3 { font-size: clamp(19px, 2.8vw, 31px); letter-spacing: -.7px; font-weight: 500; margin: 12px 0; line-height: 1.25; }
+.overlay > p { margin: 0; font-size: 11px; line-height: 1.8; color: #b49bc6; }
+.overlayActions { display: flex; gap: 22px; align-items: center; justify-content: center; margin-top: 22px; }
+.overlayActions > button { min-height: 40px; font-size: 10px; }
+.overlay > p.result { margin-top: 10px; color: #d0b6e8; font: 11px/1.5 ui-monospace, Consolas, monospace; }
+.result span { color: #79548e; padding: 0 8px; }
+.controls { display: flex; align-items: center; justify-content: space-between; gap: 15px; padding: 17px 0; user-select: none; }
+.control { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 56px; min-width: 125px; padding: 10px 17px; border: 1px solid #9160bd80; border-radius: 8px; color: #dbc3f5; background: linear-gradient(130deg, #38204f, #231331); font-size: 11px; font-weight: 700; letter-spacing: .8px; touch-action: none; user-select: none; -webkit-user-select: none; transition: border-color .12s, background .12s, box-shadow .12s; }
+.control > span { font-size: 18px; font-weight: 400; color: #c398ee; }
+.control small { font-size: 7px; color: #a07bb8; letter-spacing: 1px; font-weight: 500; }
+.control:disabled { opacity: .35; }
+.control:not(:disabled):hover { border-color: #b688dc; }
+.control:not(:disabled):active, .control.pressed { background: #64309a; border-color: #c89bf0; box-shadow: inset 0 0 18px #8b5cf62b; }
+.help { text-align: center; color: #a088b4; font-size: 9px; line-height: 1.8; margin: 0; }
+.help > span { display: block; }
+.help > span:nth-child(2) { color: #7e668e; font-size: 8px; }
+.help .touchHelp { display: none; }
+.footer { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 28px; border-top: 1px solid #c4b5fd13; color: #8f749f; font-size: 8px; line-height: 1.6; }
+.live { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.motionNote { font-size: 9px; line-height: 1.7; color: #a58bb6; margin: 0 0 12px; }
+@media (max-width: 600px) {
+  .modal { width: calc(100% - 20px); max-height: calc(100dvh - 20px); border-radius: 12px; }
+  .header { padding: 19px 16px 15px; gap: 8px; }
+  .kicker { font-size: 6px; letter-spacing: 1px; margin-bottom: 9px; }
+  .header h2 { font-size: 20px; letter-spacing: -.5px; max-width: 240px; }
+  .header p:last-child { font-size: 10px; margin-top: 8px; }
+  .close { width: 29px; height: 29px; }
+  .game { padding: 0 12px; }
+  .hud { gap: 16px; padding: 12px 2px; }
+  .hud > div { flex-direction: column; gap: 4px; }
+  .hud strong { font-size: 17px; }
+  .hud span { font-size: 7px; }
+  .overlay { padding: 10px; }
+  .overlayKicker { font-size: 6px; letter-spacing: 1.2px; }
+  .overlay h3 { font-size: 20px; margin: 9px 0; max-width: 250px; }
+  .overlay > p { font-size: 9px; }
+  .overlayActions { margin-top: 12px; gap: 18px; }
+  .overlayActions > button { min-height: 36px; font-size: 9px; }
+  .controls { flex-wrap: wrap; gap: 10px; padding: 13px 0 10px; }
+  .control { min-width: 0; width: 44%; min-height: 58px; padding: 10px; gap: 6px; }
+  .control small { font-size: 6px; }
+  .help { order: 3; flex-basis: 100%; font-size: 8px; }
+  .help > span { display: none; }
+  .help .touchHelp { display: block; }
+  .footer { padding: 11px 16px; font-size: 7px; }
+  .footer > span:first-child { max-width: 210px; }
+}
+@media (max-height: 520px) and (min-width: 601px) {
+  .header { padding: 12px 20px; align-items: center; }
+  .kicker { display: none; }
+  .header h2 { font-size: 20px; }
+  .header p:last-child { margin-top: 4px; font-size: 9px; }
+  .hud { padding: 7px 2px; }
+  .canvas { max-height: max(130px, calc(100dvh - 220px)); }
+  .controls { padding: 8px 0; }
+  .control { min-height: 42px; }
+  .overlay h3 { font-size: 20px; margin: 7px 0; }
+  .overlayKicker { display: none; }
+  .overlayActions { margin-top: 10px; }
+  .overlayActions > button { min-height: 33px; }
+  .footer { padding: 7px 20px; }
+}
+@media (prefers-reduced-motion: reduce) { .control { transition: none; } }

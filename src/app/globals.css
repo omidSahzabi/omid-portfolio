@@ -1,0 +1,285 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: #09070d;
+  --color-surface: #151020;
+  --color-purple: #8b5cf6;
+  --color-lilac: #c4b5fd;
+  --font-sans: "Manrope", sans-serif;
+}
+
+:root { color-scheme: dark; --background: #09070d; --surface: #151020; --purple: #8b5cf6; --light: #e7def6; --muted: #a69ab9; --border: #c4b5fd1c; }
+* { box-sizing: border-box; }
+html { background: var(--background); scroll-behavior: smooth; scrollbar-width: thin; scrollbar-color: #493063 #09070d; }
+body { margin: 0; background: var(--background); color: var(--light); font-family: "Manrope", sans-serif; font-size: 14px; -webkit-font-smoothing: antialiased; }
+button, a { -webkit-tap-highlight-color: transparent; }
+button { font: inherit; color: inherit; cursor: pointer; }
+button, input, textarea { font-family: inherit; }
+button { background: none; border: 0; }
+a { color: inherit; text-decoration: none; }
+button:focus-visible, a:focus-visible { outline: 2px solid #c4b5fd; outline-offset: 6px; }
+::selection { background: #6d28d9; color: #e7def6; }
+button:disabled { cursor: default; }
+.sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+.skip-link { position: fixed; top: 12px; left: 12px; padding: 12px 18px; background: #6d28d9; z-index: 100; transform: translateY(-150%); }
+.skip-link:focus { transform: translateY(0); }
+.site-header { height: 100px; padding: 0 4.4%; position: fixed; inset: 0 0 auto; z-index: 20; display: flex; align-items: center; gap: 36px; background: linear-gradient(#09070df5, #09070da8, #09070d00); }
+.site-header::after { content: ""; position: absolute; height: 1px; bottom: 0; left: 4.4%; right: 4.4%; background: var(--border); }
+/* Offset the PNG's empty side padding without clipping or altering the asset. */
+.wordmark { position: relative; display: block; width: 150px; height: 72px; flex-shrink: 0; }
+.brand-logo { position: absolute; left: -30px; top: 0; display: block; width: 216px; height: 72px; max-width: none; object-fit: contain; pointer-events: none; }
+.icon-button { display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border: 1px solid var(--border); border-radius: 50%; background: #151020; }
+.icon-button:hover { border-color: #8b5cf6; }
+.story-track { height: max(997.6svh, calc(5280px - 32svh)); }
+.experience-viewport { position: fixed; inset: 0; overflow: hidden; }
+.canvas-wrap { position: absolute; inset: 0; z-index: 0; }
+.canvas-wrap canvas { display: block; touch-action: pan-y; }
+.scene-vignette { pointer-events: none; position: absolute; inset: 0; background: linear-gradient(90deg, #09070d00 28%, #09070d08 41%, #09070dcb 57%, #09070df5 75%), linear-gradient(0deg, #09070d 8%, #09070d00 27%, #09070d00 78%, #09070d80); }
+.experience-topline { position: absolute; top: 132px; left: 4.4%; right: 4.4%; display: flex; align-items: center; justify-content: space-between; pointer-events: none; }
+.story-badge { display: inline-flex; align-items: center; gap: 9px; color: #b5a6c9; font: 9px/1.2 "Manrope", sans-serif; letter-spacing: 1.5px; border: 1px solid #9576b72b; border-radius: 30px; background: #15102070; padding: 10px 13px; }
+.status-dot { display: inline-block; height: 5px; width: 5px; border-radius: 50%; background: #a581f5; box-shadow: 0 0 10px #8b5cf65c; flex-shrink: 0; }
+.experience-edition { font-size: 9px; color: #8d7d9f; letter-spacing: 1.8px; }
+.narrative-stage { position: absolute; left: 52.2%; right: 4%; top: 50%; transform: translateY(-51%); height: 450px; pointer-events: none; }
+.narrative-copy { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; opacity: 0; visibility: hidden; pointer-events: none; }
+.narrative-copy.is-active { opacity: 1; visibility: visible; pointer-events: auto; }
+.eyebrow { color: #a98acb; font-size: 10px; line-height: 1.7; letter-spacing: 1.8px; font-weight: 600; }
+.narrative-eyebrow { display: flex; align-items: center; gap: 11px; font-size: 8.5px; letter-spacing: 1.4px; margin: 0 0 24px; white-space: nowrap; }
+.small-line { display: inline-block; height: 1px; width: 24px; background: #8b5cf6; flex-shrink: 0; }
+.narrative-copy h1 { font-size: clamp(76px, 7.9vw, 126px); letter-spacing: -7px; line-height: .98; font-weight: 500; margin: 0 0 28px -5px; }
+.narrative-copy h1 > span { color: #a880f5; }
+.title-period { color: #6d28d9; }
+.narrative-copy h2 { font-size: clamp(36px, 3.5vw, 59px); letter-spacing: -2.5px; font-weight: 500; line-height: 1.15; margin: 0 0 25px; text-wrap: balance; }
+.purple-line { color: #a880f5; }
+.narrative-subtitle { max-width: 420px; font-size: 16px; font-weight: 400; line-height: 1.8; color: #c4b6d3; margin: 0; }
+.narrative-detail { color: #b19ac8; max-width: 430px; font-size: 11px; line-height: 1.9; margin: 16px 0 0; }
+.narrative-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 24px; margin-top: 32px; }
+.primary-button { display: inline-flex; align-items: center; justify-content: center; min-height: 49px; padding: 0 21px; gap: 25px; color: #eee5fc; background: #6d28d9; border: 1px solid #9b6de444; border-radius: 5px; font-size: 11px; font-weight: 600; transition: background .2s, box-shadow .2s; }
+.primary-button:hover { background: #7c3ae6; box-shadow: 0 0 26px #6d28d926; }
+.primary-button svg { width: 17px; height: 17px; }
+.text-button, .text-link { display: inline-flex; align-items: center; gap: 11px; font-size: 10px; color: #bfb0d2; padding: 12px 0; transition: color .2s; }
+.text-button:hover, .text-link:hover { color: #d8c4fb; }
+.text-button svg, .text-link svg { width: 14px; height: 14px; }
+.world-caption { position: absolute; left: 5.3%; top: 29%; display: flex; align-items: center; gap: 12px; color: #a591ba; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 9px; letter-spacing: .7px; }
+.caption-cross { color: #9671bd; font-size: 18px; font-weight: 300; }
+.caption-divider { padding: 0 10px; color: #6d4e89; }
+.scene-footnote { position: absolute; left: 8%; bottom: 165px; display: flex; align-items: center; gap: 13px; color: #8e71ae; }
+.scene-footnote svg { width: 31px; height: 31px; }
+.scene-footnote span { font-size: 10px; line-height: 1.8; color: #a58cbf; }
+.scene-footnote strong { font-weight: 400; color: #756182; }
+.scroll-prompt { position: absolute; bottom: 132px; left: 52.2%; display: flex; align-items: center; gap: 12px; color: #927fa3; font-size: 8px; letter-spacing: 1.7px; }
+.scroll-mouse { width: 13px; height: 20px; border: 1px solid #83659c; border-radius: 7px; display: inline-flex; align-items: flex-start; justify-content: center; padding-top: 4px; }
+.scroll-mouse span { width: 2px; height: 4px; background: #ba91ec; animation: scroll-hint 2.4s ease-in-out infinite; }
+.scroll-prompt-line { height: 1px; width: 38px; background: #61427e; margin-left: 5px; }
+@keyframes scroll-hint { 0%,100% { transform: translateY(0); opacity: .5; } 50% { transform: translateY(4px); opacity: 1; } }
+.experience-footer { position: fixed; bottom: 0; left: 4.4%; right: 4.4%; height: 90px; display: flex; align-items: center; gap: 20px; border-top: 1px solid var(--border); z-index: 10; background: #09070dc9; }
+.chapter-progress { display: flex; align-items: center; gap: 9px; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 10px; min-width: 150px; }
+.current-chapter { color: #c4b5fd; }
+.progress-divider { color: #786087; }
+.progress-track { height: 2px; width: 64px; background: #302038; margin-left: 9px; overflow: hidden; }
+.progress-track span { width: 100%; height: 100%; background: #a078e4; display: block; transform-origin: left; }
+.chapter-nav { display: flex; gap: 26px; align-items: center; justify-content: center; margin: 0 auto; }
+.chapter-nav button { display: flex; align-items: center; gap: 8px; padding: 16px 0; white-space: nowrap; color: #8e7b9d; font-size: 9px; transition: color .25s; }
+.chapter-nav button:hover { color: #c4b5fd; }
+.chapter-dot { width: 4px; height: 4px; border-radius: 50%; background: #604674; position: relative; transition: background .25s; }
+.chapter-nav button.active { color: #d1b8f4; }
+.chapter-nav button.active .chapter-dot { background: #a178ef; box-shadow: 0 0 8px #8b5cf645; }
+.chapter-nav button.active .chapter-dot::after { content: ""; position: absolute; inset: -4px; border: 1px solid #9260c24f; border-radius: 50%; }
+.motion-button { display: flex; gap: 8px; align-items: center; color: #a28caf; font-size: 9px; white-space: nowrap; padding: 14px 0; }
+.motion-symbol { font-size: 10px; color: #b78de9; }
+.journey-info-button { display: flex; align-items: center; justify-content: center; border: 1px solid #5a3e724f; border-radius: 50%; width: 22px; height: 22px; color: #a78abf; font-family: Georgia, serif; font-size: 11px; margin-left: auto; flex-shrink: 0; }
+.journey-info-button:hover { border-color: #8b5cf6; }
+.loading-state { position: absolute; left: 21%; top: 53%; transform: translate(-50%, -50%); display: flex; align-items: center; flex-direction: column; gap: 14px; color: #c4b5fd; font-size: 11px; width: 250px; background: #09070d99; padding: 25px; border-radius: 10px; }
+.loading-ring { height: 25px; width: 25px; border: 1px solid #49305d; border-top-color: #a880f5; border-radius: 50%; animation: loading 1.5s linear infinite; }
+.loading-sub { font-size: 9px; color: #a58db9; text-align: center; }
+@keyframes loading { to { transform: rotate(360deg); } }
+
+/* Contextual dialogs share the same backdrop. */
+dialog::backdrop { background: #050309c9; backdrop-filter: blur(12px); }
+.info-dialog { background: #151020; color: var(--light); border: 1px solid #79549750; border-radius: 10px; padding: 0; width: min(510px, calc(100% - 40px)); max-height: calc(100svh - 40px); }
+.info-dialog-content { padding: 42px; }
+.info-dialog .icon-button { position: absolute; top: 16px; right: 16px; width: 32px; height: 32px; }
+.info-dialog h2 { font-size: 30px; font-weight: 500; letter-spacing: -1px; margin: 20px 0; }
+.info-dialog p { font-size: 12px; line-height: 1.9; color: #baa3cd; }
+.info-dialog p.eyebrow { font-size: 9px; }
+.asset-note { margin: 24px 0; padding: 20px; background: #24182f; border-radius: 5px; border: 1px solid #79549733; }
+.asset-note h3 { font-size: 12px; color: #d0b3ed; margin: 0; }
+.asset-note p { font-size: 11px; }
+.asset-note small { font-size: 9px; color: #b194c7; line-height: 1.8; display: block; }
+.info-dialog .primary-button { margin-top: 8px; }
+
+@media (min-width: 1600px) { .narrative-stage { height: 530px; } .narrative-eyebrow { font-size: 10px; } .narrative-subtitle { font-size: 20px; max-width: 410px; } .narrative-detail { font-size: 13px; } .primary-button { font-size: 13px; min-height: 54px; } .text-button { font-size: 12px; } .chapter-nav { gap: 40px; } .chapter-nav button { font-size: 11px; } }
+@media (max-width: 1150px) { .chapter-nav { gap: 17px; } .chapter-nav button { font-size: 8px; gap: 6px; } .chapter-progress { min-width: 110px; } .progress-track { width: 40px; } .experience-footer { gap: 12px; } .narrative-eyebrow { font-size: 7.5px; letter-spacing: 1px; } .narrative-actions { gap: 15px; } .primary-button { padding: 0 16px; gap: 17px; } .narrative-copy h1 { letter-spacing: -5px; } .narrative-subtitle { font-size: 15px; } }
+@media (max-height: 760px) and (min-width: 768px) { .site-header { height: 80px; } .experience-topline { top: 105px; } .narrative-stage { height: 390px; top: 49%; } .narrative-copy h1 { font-size: 85px; margin-bottom: 22px; } .narrative-copy h2 { font-size: 45px; margin-bottom: 20px; } .narrative-eyebrow { margin-bottom: 20px; } .narrative-actions { margin-top: 23px; } .scene-footnote { bottom: 125px; } .scroll-prompt { bottom: 110px; } .experience-footer { height: 74px; } }
+@media (max-width: 900px) and (min-width: 768px) { .narrative-stage { left: 49%; right: 4%; } .narrative-actions { gap: 10px; } .narrative-actions .text-button { font-size: 9px; } .chapter-nav button { font-size: 0; padding: 20px 10px; } .chapter-nav { gap: 8px; } .scene-vignette { background: linear-gradient(90deg, transparent 20%, #09070de6 58%, #09070d 90%), linear-gradient(0deg, #09070d 10%, transparent 40%); } }
+@media (max-width: 767px) {
+  .site-header { height: 80px; padding: 0 6%; gap: 16px; background: linear-gradient(#09070d, #09070deb, #09070d8c); }
+  .site-header::after { left: 6%; right: 6%; }
+  .wordmark { width: 112px; height: 52px; }
+  .brand-logo { left: -12px; width: 156px; height: 52px; }
+  .experience-topline { top: 102px; left: 6%; right: 6%; }
+  .story-badge { font-size: 7px; letter-spacing: 1px; padding: 8px 10px; }
+  .experience-edition { font-size: 6px; letter-spacing: 1px; }
+  .canvas-wrap { top: 55px; bottom: 26%; }
+  .scene-vignette { background: linear-gradient(0deg, #09070d 21%, #09070dfc 32%, #09070da6 43%, #09070d00 66%, #09070d70 90%); }
+  .narrative-stage { left: 7%; right: 7%; top: auto; bottom: 137px; height: auto; min-height: 290px; transform: none; }
+  .narrative-copy { justify-content: flex-end; }
+  .narrative-eyebrow { font-size: 6.8px; letter-spacing: .85px; margin-bottom: 16px; gap: 8px; }
+  .small-line { width: 18px; }
+  .narrative-copy h1 { font-size: clamp(65px, 17.5vw, 88px); line-height: .99; letter-spacing: -4.5px; margin-bottom: 18px; margin-left: -3px; }
+  .narrative-copy h1 br { display: none; }
+  .narrative-copy h1 > span { display: block; }
+  .narrative-copy h2 { font-size: clamp(35px, 9.5vw, 51px); line-height: 1.13; letter-spacing: -2px; margin-bottom: 17px; }
+  .narrative-subtitle { font-size: 13px; line-height: 1.8; max-width: 290px; }
+  .narrative-detail { font-size: 9px; margin-top: 9px; max-width: 320px; }
+  .narrative-actions { gap: 19px; margin-top: 22px; flex-wrap: nowrap; }
+  .primary-button { min-height: 45px; font-size: 9px; gap: 15px; padding: 0 15px; white-space: nowrap; }
+  .primary-button svg { width: 15px; height: 15px; }
+  .text-button { font-size: 9px; gap: 7px; white-space: nowrap; }
+  .text-button svg { width: 12px; height: 12px; }
+  .world-caption { left: auto; right: 7%; top: 27%; font-size: 7px; letter-spacing: .2px; }
+  .caption-cross { font-size: 14px; }
+  .caption-divider { padding: 0 7px; }
+  .scene-footnote { display: none; }
+  .scroll-prompt { bottom: 92px; left: 7%; font-size: 6.5px; letter-spacing: 1.3px; gap: 9px; }
+  .scroll-mouse { width: 11px; height: 17px; }
+  .scroll-prompt-line { width: 30px; }
+  .experience-footer { height: 63px; left: 6%; right: 6%; gap: 10px; }
+  .chapter-progress { min-width: auto; font-size: 9px; gap: 6px; }
+  .progress-track { display: none; }
+  .chapter-nav { gap: 1px; }
+  .chapter-nav button { font-size: 0; padding: 16px 11px; gap: 0; }
+  .chapter-dot { width: 4px; height: 4px; }
+  .journey-info-button { width: 20px; height: 20px; font-size: 10px; margin-left: 0; }
+  .motion-button { font-size: 7px; gap: 5px; }
+  .loading-state { top: 32%; left: 44%; font-size: 9px; padding: 15px; }
+  .loading-sub { font-size: 8px; }
+  .info-dialog-content { padding: 30px 24px; }
+  .info-dialog h2 { font-size: 26px; }
+}
+@media (max-height: 720px) and (max-width: 767px) { .experience-topline { top: 93px; } .narrative-stage { bottom: 123px; min-height: 265px; } .narrative-copy h1 { font-size: 62px; margin-bottom: 12px; } .narrative-copy h2 { font-size: 34px; } .narrative-eyebrow { margin-bottom: 12px; } .narrative-subtitle { font-size: 12px; } .narrative-detail { font-size: 8px; } .narrative-actions { margin-top: 16px; } .scroll-prompt { bottom: 85px; } .world-caption { top: 25%; } }
+@media (max-width: 360px) { .narrative-stage { bottom: 112px; } .narrative-copy h2 { font-size: 29px; letter-spacing: -1.3px; } .narrative-subtitle { font-size: 12px; line-height: 1.75; } .narrative-actions { gap: 12px; margin-top: 18px; } .narrative-actions .primary-button { font-size: 8px; padding: 0 12px; } .narrative-actions .text-button { font-size: 8px; } .experience-edition { display: none; } .chapter-nav button { padding-left: 9px; padding-right: 9px; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
+
+/* World-anchored content and the appended finale. Original chapter composition stays intact. */
+.animated-skills { margin-left: auto; display: flex; align-items: center; gap: 12px; white-space: nowrap; }
+.skills-prefix { font: 8px/1.4 ui-monospace, Consolas, monospace; color: #8d789f; letter-spacing: 1.4px; }
+.skill-name { display: inline-block; width: 110px; font-size: 12px; color: #c9b4e5; }
+.scene-vignette { z-index: 1; }
+.narrative-stage { z-index: 3; outline: none; }
+.experience-topline, .world-caption { z-index: 2; }
+.scene-footnote, .scroll-prompt { z-index: 3; }
+.loading-state { z-index: 5; }
+.chapter-nav { gap: 23px; }
+.narrative-actions.sign-context { flex-wrap: wrap; gap: 4px 14px; }
+.sign-context-label { font-size: 8px; letter-spacing: 1.1px; color: #9378ac; }
+.sign-context .text-button { font-size: 11px; }
+.narrative-experience { font-size: 9px; line-height: 1.8; max-width: 390px; color: #a88cbf; margin: 29px 0 0; }
+.portal-entry-hint { color: #a689bf; font-size: 8px; line-height: 1.8; letter-spacing: 1.5px; margin-top: 32px; }
+.world-sign-source { color: #dfcef0; background: #100c16; font-family: "Manrope", sans-serif; overflow: hidden; border: 1px solid #8250b568; border-radius: 4px; }
+.world-sign-source a:focus-visible { outline: 4px solid #c4b5fd; outline-offset: -5px; }
+.contact-board-content { padding: 25px 30px; height: 100%; background: #100c16; }
+.sign-kicker { color: #bc94ea; font-size: 21px; font-weight: 600; letter-spacing: 3px; line-height: 1.5; margin: 0 0 13px; }
+.contact-board-entry { display: grid; grid-template-columns: 1fr 28px; align-items: center; padding: 11px 0; border-top: 1px solid #78469840; transition: color .2s, background .2s; }
+.contact-board-entry > span { grid-column: 1; font: 17px/1.5 ui-monospace, Consolas, monospace; letter-spacing: 2px; color: #a48bbd; }
+.contact-board-entry strong { grid-column: 1; font-size: 33px; font-weight: 500; line-height: 1.5; letter-spacing: -.5px; }
+.contact-board-entry svg { grid-column: 2; grid-row: 1 / 3; width: 25px; height: 25px; color: #b389e3; }
+.contact-board-entry:hover { background: #24172f; color: #e8d8fb; }
+.contact-board-note { font-size: 17px; line-height: 1.5; color: #987eac; margin: 12px 0 0; }
+.project-sign-content { display: flex; flex-direction: column; height: 100%; padding: 22px; background: #100c16; color: #dccbec; transition: background .22s, box-shadow .22s; }
+a.project-sign-content:hover { background: #20132e; box-shadow: inset 0 0 0 3px #9b70d171; }
+.project-sign-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 16px; font: 14px/1.5 ui-monospace, Consolas, monospace; letter-spacing: 1.4px; color: #a78bbd; }
+.sign-status { color: #c6a5e9; padding: 3px 10px; border: 1px solid #8d5cbc69; border-radius: 30px; font: 14px/1.5 "Manrope", sans-serif; letter-spacing: .5px; }
+.sign-status.coming-soon { color: #a18aaf; border-color: #65457970; }
+.project-sign-preview { min-height: 0; flex: 1; width: 100%; background: #09070d; border: 1px solid #63407935; overflow: hidden; }
+.project-sign-preview img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.project-sign-caption { display: flex; justify-content: space-between; align-items: center; gap: 15px; margin-top: 15px; }
+.project-sign-caption h3 { margin: 0; font-size: 30px; font-weight: 500; line-height: 1.3; letter-spacing: -.8px; }
+.project-sign-caption p { margin: 5px 0 0; color: #aa8dbd; font-size: 17px; line-height: 1.4; }
+.project-sign-caption svg { width: 30px; height: 30px; flex-shrink: 0; color: #b68dde; }
+.project-sign-coming { cursor: default; }
+.wall-project-preview { border: 1px solid #58415e; border-radius: 0; }
+.wall-project-preview .project-sign-content { position: relative; padding: 6px; }
+.wall-project-preview .project-sign-top,
+.wall-project-preview .project-sign-caption p,
+.wall-project-preview .project-sign-caption svg { display: none; }
+.wall-project-preview .project-sign-caption { margin-top: 6px; }
+.wall-project-preview .project-sign-caption h3 { font-size: 16px; line-height: 1.3; letter-spacing: 0; }
+.wall-project-preview .project-sign-coming .project-sign-top { display: block; position: absolute; right: 6px; bottom: 6px; margin: 0; }
+.wall-project-preview .project-sign-top > span:first-child { display: none; }
+.wall-project-preview .sign-status { padding: 0; border: 0; border-radius: 0; font-size: 13px; }
+.wall-project-preview a.project-sign-content:hover { background: #19111f; box-shadow: inset 0 0 0 1px #9b70d150; }
+.sign-reader { background: #100c16; color: var(--light); width: min(620px, calc(100% - 32px)); max-height: calc(100svh - 32px); padding: 0; border: 1px solid #8250b565; border-radius: 9px; overflow: auto; overscroll-behavior: contain; }
+.sign-reader-shell { padding: 22px; }
+.sign-reader-heading { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding-bottom: 17px; color: #a58bb9; font: 8px/1.6 ui-monospace, Consolas, monospace; letter-spacing: 1.3px; }
+.sign-reader .contact-board-content { padding: 24px 12px; }
+.sign-reader .sign-kicker { font-size: 15px; letter-spacing: 2px; }
+.sign-reader .contact-board-entry > span { font-size: 10px; }
+.sign-reader .contact-board-entry strong { font-size: clamp(15px, 3.7vw, 24px); letter-spacing: -.35px; }
+.sign-reader .contact-board-entry svg { width: 17px; height: 17px; }
+.sign-reader .contact-board-note { font-size: 11px; }
+.sign-reader .project-sign-content { padding: 20px 0; height: auto; }
+.sign-reader .project-sign-top { font-size: 9px; letter-spacing: 1px; }
+.sign-reader .sign-status { font-size: 9px; }
+.sign-reader .project-sign-preview { height: 250px; flex: none; }
+.sign-reader .project-sign-caption h3 { font-size: 25px; }
+.sign-reader .project-sign-caption p { font-size: 12px; }
+.sign-reader-footnote { font-size: 10px; line-height: 1.8; color: #8d739f; margin: 19px 0 0; border-top: 1px solid #67467e35; padding-top: 17px; }
+.finale-cta { position: absolute; z-index: 4; left: 50%; top: 48%; width: min(540px, 84%); text-align: center; pointer-events: auto; padding: 35px 10px; }
+.finale-cta::before { content: ""; position: absolute; z-index: -1; inset: -30px -40px; background: radial-gradient(ellipse, #020617b5, #02061700 70%); pointer-events: none; }
+.finale-cta .eyebrow { font-size: 9px; letter-spacing: 2.5px; color: #a699d0; margin: 0 0 23px; }
+.finale-cta h2 { color: #e1def5; font-size: clamp(48px, 6vw, 80px); font-weight: 500; line-height: 1.05; letter-spacing: -4px; margin: 0 0 24px; }
+.finale-cta > p:not(.eyebrow) { color: #b7b7d2; font-size: 15px; line-height: 1.8; margin: 0; }
+.finale-button { margin-top: 30px; background: linear-gradient(110deg, #6026bd, #263b6b); border-color: #9b7bde50; }
+.finale-button:hover { background: linear-gradient(110deg, #7440cb, #334d80); box-shadow: 0 0 28px #432b8540; }
+.finale-cta.is-static { position: relative; left: auto; top: auto; width: 100%; margin: 45px auto 80px; }
+.accessible-journey { max-width: 940px; margin: auto; padding: 165px 40px 0; }
+.accessible-journey > h1 { font-size: clamp(48px, 7vw, 76px); font-weight: 500; letter-spacing: -3px; margin: 30px 0 20px; line-height: 1.12; }
+.accessible-journey > h1 span { color: #aa82de; }
+.accessible-intro { color: #c4aed7; font-size: 17px; line-height: 1.8; max-width: 480px; }
+.journey-mode-note { color: #9c83b0; font-size: 11px; line-height: 1.8; }
+.accessible-contact-sign { max-width: 600px; margin-top: 32px; border: 1px solid #71479280; border-radius: 5px; }
+.accessible-contact-sign .sign-kicker { font-size: 13px; }
+.accessible-contact-sign .contact-board-entry > span { font-size: 10px; }
+.accessible-contact-sign .contact-board-entry strong { font-size: clamp(15px, 3.7vw, 25px); }
+.accessible-contact-sign .contact-board-note { font-size: 11px; }
+.accessible-chapters, .accessible-sign-sequence { list-style: none; margin: 0; padding: 0; }
+.accessible-chapters > li { padding: 60px 0; margin-top: 40px; border-top: 1px solid var(--border); }
+.accessible-chapters h2 { font-size: clamp(32px, 4.8vw, 49px); letter-spacing: -1.7px; font-weight: 500; line-height: 1.2; max-width: 720px; }
+.accessible-chapters > li > p:not(.eyebrow) { max-width: 600px; font-size: 14px; line-height: 1.9; color: #b8a1cb; }
+.accessible-chapters > li > p.accessible-skill-line { font-size: 11px; color: #a783c8; }
+.accessible-sign-sequence { max-width: 600px; margin-top: 35px; }
+.accessible-sign-sequence > li { height: 420px; margin-top: 25px; border: 1px solid #71479280; border-radius: 5px; overflow: hidden; }
+.return-to-journey { display: flex; margin: 0 auto 60px; }
+@media (max-width: 1150px) { .chapter-nav { gap: 15px; } }
+@media (max-width: 767px) {
+  .animated-skills { gap: 9px; }
+  .skills-prefix { font-size: 7px; letter-spacing: .8px; }
+  .skill-name { width: 89px; font-size: 10px; }
+  .chapter-nav { gap: 0; }
+  .chapter-nav button { padding-left: 8px; padding-right: 8px; }
+  .narrative-experience { font-size: 8px; margin-top: 22px; max-width: 290px; }
+  .sign-context .text-button { font-size: 9px; }
+  .sign-context-label { font-size: 7px; }
+  .portal-entry-hint { font-size: 7px; margin-top: 24px; }
+  .sign-reader-shell { padding: 17px; }
+  .sign-reader-heading { font-size: 7px; letter-spacing: .7px; }
+  .sign-reader .contact-board-content { padding: 20px 5px; }
+  .sign-reader .project-sign-preview { height: 180px; }
+  .sign-reader .project-sign-caption h3 { font-size: 22px; }
+  .finale-cta { top: 39%; width: 90%; }
+  .finale-cta h2 { font-size: 54px; letter-spacing: -2.8px; }
+  .finale-cta .eyebrow { font-size: 7px; margin-bottom: 18px; }
+  .finale-cta > p:not(.eyebrow) { font-size: 12px; }
+  .finale-cta.is-static { top: auto; }
+  .accessible-journey { padding: 135px 7% 0; }
+  .accessible-journey > h1 { font-size: 50px; }
+  .accessible-intro { font-size: 14px; }
+  .accessible-contact-sign .contact-board-content { padding: 22px 15px; }
+  .accessible-sign-sequence > li { height: 310px; }
+  .accessible-sign-sequence .project-sign-top { font-size: 8px; letter-spacing: .5px; }
+  .accessible-sign-sequence .sign-status { font-size: 8px; }
+  .accessible-sign-sequence .project-sign-caption h3 { font-size: 22px; }
+  .accessible-sign-sequence .project-sign-caption p { font-size: 11px; }
+}
+@media (max-width: 360px) { .skills-prefix { display: none; } .chapter-nav button { padding-left: 7px; padding-right: 7px; } .sign-context .text-button { font-size: 8px; } }
+@media (min-width: 768px) { .world-caption.is-gallery { top: 190px; } }
