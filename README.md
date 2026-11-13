@@ -98,6 +98,8 @@ Reverse scrolling evaluates the same functions: CTA fades, atmosphere reduces, c
 
 ## Accessibility and performance
 
+See [PERFORMANCE.md](PERFORMANCE.md) for the measured optimization audit, changed files, reproducible profiling commands, and current validation limitations.
+
 - Essential sign content uses semantic HTML and native anchors with visible focus.
 - Inactive narrative chapters and offscreen signs are inert.
 - Mobile contextual readers reuse the same sign content and destinations.

@@ -3,7 +3,7 @@
 import { Component, memo, useEffect, useRef, type ReactNode } from "react";
 import { Canvas, useThree } from "@react-three/fiber";
 import { AdaptiveDpr } from "@react-three/drei";
-import { ACESFilmicToneMapping, SRGBColorSpace } from "three";
+import { ACESFilmicToneMapping, SRGBColorSpace, type Mesh } from "three";
 import type { NarrativeState } from "@/lib/experience/narrativeTimeline";
 import { CinematicCameraRig } from "./CinematicCameraRig";
 import { OctocatCharacter } from "./OctocatCharacter";
@@ -22,13 +22,21 @@ class CanvasBoundary extends Component<{ children: ReactNode; onFailure: () => v
 
 function CanvasLifecycle({ onReady, onFailure }: { onReady: () => void; onFailure: () => void }) {
   const gl = useThree(s => s.gl);
+  const scene = useThree(s => s.scene);
   useEffect(() => {
+    // Mesh.raycast uses an existing local bounding box to reject misses before
+    // testing triangles. This is especially useful for long floors and shelves.
+    // Compute once for shared geometries; rendered vertices remain untouched.
+    scene.traverse(object => {
+      const geometry = (object as Mesh).geometry;
+      if (geometry && !geometry.boundingBox) geometry.computeBoundingBox();
+    });
     onReady();
     const canvas = gl.domElement;
     const lost = (event: Event) => { event.preventDefault(); onFailure(); };
     canvas.addEventListener("webglcontextlost", lost);
     return () => canvas.removeEventListener("webglcontextlost", lost);
-  }, [gl, onReady, onFailure]);
+  }, [gl, scene, onReady, onFailure]);
   return null;
 }
 

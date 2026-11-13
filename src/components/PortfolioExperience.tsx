@@ -1,7 +1,6 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import Image from "next/image";
 import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { chapterAt, chapters, createNarrativeState, finaleChapter, smoothRange } from "@/lib/experience/narrativeTimeline";
 import { TIMELINE_END } from "@/lib/experience/finaleTimeline";
@@ -68,7 +67,11 @@ export function PortfolioExperience() {
   return <>
     <a className="skip-link" href={fallback ? "#journey-beginning" : "#story-content"}>Skip to the story</a>
     <header className="site-header">
-      <a className="wordmark" href="#journey-beginning" aria-label="Omid Sahzabi home" onClick={event => { event.preventDefault(); if (fallback) window.scrollTo({ top: 0, behavior: reducedMotion ? "instant" : "smooth" }); else scrollToProgress(0, reducedMotion); }}><Image className="brand-logo" src="/images/logo.png" alt="Omid — Personal Portfolio" width={2172} height={724} sizes="(max-width: 767px) 156px, 216px" loading="eager" fetchPriority="high" /></a>
+      <a className="wordmark" href="#journey-beginning" aria-label="Omid Sahzabi home" onClick={event => { event.preventDefault(); if (fallback) window.scrollTo({ top: 0, behavior: reducedMotion ? "instant" : "smooth" }); else scrollToProgress(0, reducedMotion); }}>
+        {/* Static export: provide responsive assets without a runtime image server. */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img className="brand-logo" src="/images/optimized/logo.webp" srcSet="/images/optimized/logo-216.webp 216w, /images/optimized/logo-432.webp 432w, /images/optimized/logo-648.webp 648w, /images/optimized/logo-864.webp 864w, /images/optimized/logo.webp 2172w" alt="Omid — Personal Portfolio" width={2172} height={724} sizes="(max-width: 767px) 156px, 216px" loading="eager" fetchPriority="high" />
+      </a>
       <AnimatedSkills reducedMotion={reducedMotion} />
     </header>
 

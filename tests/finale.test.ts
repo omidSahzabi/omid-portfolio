@@ -1,6 +1,6 @@
 import { strict as assert } from "node:assert";
 import { test } from "node:test";
-import { readFileSync } from "node:fs";
+import sharp from "sharp";
 import { Vector3 } from "three";
 import { FINALE_EXTENSION, TIMELINE_END, finaleState, originalScrollDistance } from "../src/lib/experience/finaleTimeline";
 import { sampleExtendedCamera } from "../src/lib/experience/finaleCamera";
@@ -73,15 +73,18 @@ test("all finale states are deterministic on forward and reverse scrubs", () => 
   assert.ok(finaleState(1.16).atmosphere > 0 && finaleState(1.16).atmosphere < 1);
 });
 
-test("project previews are the existing local PNGs at their original aspect ratios", () => {
+test("project previews preserve the source screenshot dimensions and pixels", async () => {
   for (const project of projectWork) {
     assert.ok(project.image.src.startsWith("/images/"));
-    const bytes = readFileSync(`public${project.image.src}`);
-    assert.equal(bytes.readUInt32BE(16), project.image.width);
-    assert.equal(bytes.readUInt32BE(20), project.image.height);
+    const optimized = sharp(`public${project.image.src}`);
+    const metadata = await optimized.metadata();
+    assert.equal(metadata.width, project.image.width);
+    assert.equal(metadata.height, project.image.height);
+    const original = project.image.src.replace("/optimized/", "/").replace(/\.webp$/, ".png");
+    assert.deepEqual(await optimized.ensureAlpha().raw().toBuffer(), await sharp(`public${original}`).ensureAlpha().raw().toBuffer());
   }
   assert.equal(projectWork[2].title, "Daniyal Portfolio");
-  assert.equal(projectWork[2].image.src, "/images/httpshosseinseyedzade.dreamservice.net.png");
+  assert.equal(projectWork[2].image.src, "/images/optimized/httpshosseinseyedzade.dreamservice.net.webp");
   assert.equal(projectWork[3].url, null);
   assert.equal(projectWork[3].status, "Coming Soon");
 });

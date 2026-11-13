@@ -3,6 +3,7 @@ node_modules/
 out/
 playwright-report/
 test-results/
+.performance/
 *.tsbuildinfo
 .env*
 !.env.example

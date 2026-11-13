@@ -3,7 +3,6 @@ import "@fontsource/manrope/400.css";
 import "@fontsource/manrope/500.css";
 import "@fontsource/manrope/600.css";
 import "@fontsource/manrope/700.css";
-import "@fontsource/manrope/800.css";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -16,9 +15,9 @@ export const metadata: Metadata = {
   },
   robots: { index: true, follow: true },
   icons: {
-    icon: [{ url: "/images/favicon.png", type: "image/png", sizes: "1254x1254" }],
-    shortcut: "/images/favicon.png",
-    apple: "/images/favicon.png",
+    icon: [{ url: "/images/optimized/icon-48.png", type: "image/png", sizes: "48x48" }],
+    shortcut: "/images/optimized/icon-48.png",
+    apple: "/images/optimized/icon-180.png",
   },
 };
 

@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import { CatmullRomCurve3, type Group, Mesh, MeshStandardMaterial, TubeGeometry, Vector3 } from "three";
+import { mergeGeometries } from "three/examples/jsm/utils/BufferGeometryUtils.js";
 import { clampProgress, type NarrativeState } from "@/lib/experience/narrativeTimeline";
 import { worldPath } from "@/lib/experience/worldPath";
 import { COMPANION_DISTANCE, YARN_RADIUS, type CharacterMotion } from "@/lib/experience/characterMotion";
@@ -24,9 +25,13 @@ export function YarnBall({ state, motion }: { state: React.RefObject<NarrativeSt
     }
     const trailPoints = worldPath.getSpacedPoints(240).map(p => p.add(new Vector3(0, 0.035, 0)));
     const trail = new TubeGeometry(new CatmullRomCurve3(trailPoints), 300, 0.009, 4, false);
-    return { material, curves, trail };
+    // All strands have the same material and transform. Preserve their vertices
+    // and normals while submitting them in one draw call instead of fourteen.
+    const strands = mergeGeometries(curves);
+    curves.forEach(geometry => geometry.dispose());
+    return { material, strands, trail };
   }, []);
-  useEffect(() => () => { resources.material.dispose(); resources.curves.forEach(g => g.dispose()); resources.trail.dispose(); }, [resources]);
+  useEffect(() => () => { resources.material.dispose(); resources.strands.dispose(); resources.trail.dispose(); }, [resources]);
   const thread = useRef<Mesh>(null);
   useFrame(() => {
     const p = clampProgress(state.current.progress);
@@ -47,7 +52,7 @@ export function YarnBall({ state, motion }: { state: React.RefObject<NarrativeSt
     <group ref={root} name="companion-yarn" userData={{ radius: YARN_RADIUS }}>
       <group ref={ball}>
         <mesh castShadow><sphereGeometry args={[1, 24, 20]} /><meshStandardMaterial color="#6d28d9" roughness={0.88} /></mesh>
-        {resources.curves.map((geometry, i) => <mesh key={i} geometry={geometry} material={resources.material} dispose={null} />)}
+        <mesh geometry={resources.strands} material={resources.material} dispose={null} />
       </group>
     </group>
   </>;

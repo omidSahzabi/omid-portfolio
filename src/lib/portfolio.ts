@@ -4,10 +4,10 @@ export type PortfolioProject = {
 };
 
 export const projectWork: PortfolioProject[] = [
-  { id: "dreamservice", title: "DreamService", category: "Software Agency", url: "https://dreamservice.net", status: "Live", image: { src: "/images/dreamservice.net.png", width: 1889, height: 860, alt: "DreamService website with an interactive clock and globe" } },
-  { id: "hossein", title: "Hossein Portfolio", category: "Personal Portfolio", url: "https://hosseinseyedzade.dreamservice.net/", status: "Live", image: { src: "/images/hosseinseyedzade.dreamservice.net.png", width: 1891, height: 864, alt: "Hossein’s portfolio with his name and orbiting creative tools" } },
-  { id: "daniyal", title: "Daniyal Portfolio", category: "Personal Portfolio", url: "https://daniyalbadrlou.dreamservice.net/", status: "Live", image: { src: "/images/httpshosseinseyedzade.dreamservice.net.png", width: 1892, height: 862, alt: "Daniyal’s purple portfolio with the headline Ideas are everywhere" } },
-  { id: "mezon", title: "Mezon Shik Pik", category: "Fashion / Boutique", url: null, status: "Coming Soon", image: { src: "/images/mezonshikpik.png", width: 280, height: 437, alt: "Supplied fashion and sewing project preview" } },
+  { id: "dreamservice", title: "DreamService", category: "Software Agency", url: "https://dreamservice.net", status: "Live", image: { src: "/images/optimized/dreamservice.net.webp", width: 1889, height: 860, alt: "DreamService website with an interactive clock and globe" } },
+  { id: "hossein", title: "Hossein Portfolio", category: "Personal Portfolio", url: "https://hosseinseyedzade.dreamservice.net/", status: "Live", image: { src: "/images/optimized/hosseinseyedzade.dreamservice.net.webp", width: 1891, height: 864, alt: "Hossein’s portfolio with his name and orbiting creative tools" } },
+  { id: "daniyal", title: "Daniyal Portfolio", category: "Personal Portfolio", url: "https://daniyalbadrlou.dreamservice.net/", status: "Live", image: { src: "/images/optimized/httpshosseinseyedzade.dreamservice.net.webp", width: 1892, height: 862, alt: "Daniyal’s purple portfolio with the headline Ideas are everywhere" } },
+  { id: "mezon", title: "Mezon Shik Pik", category: "Fashion / Boutique", url: null, status: "Coming Soon", image: { src: "/images/optimized/mezonshikpik.webp", width: 280, height: 437, alt: "Supplied fashion and sewing project preview" } },
 ];
 
 export const rotatingSkills = ["React", "Next.js", "TypeScript", "JavaScript", "Node.js", "Express.js", "PostgreSQL", "MongoDB", "Tailwind CSS"];
